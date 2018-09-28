@@ -1,4 +1,4 @@
-- hosts : docker_server
+- hosts: docker_server
   tasks:
     - name: yum-utils インストール
       yum: name=yum-utils
