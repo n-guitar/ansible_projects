@@ -1,4 +1,8 @@
 - hosts: all
   tasks:
-    - name: htopインストール
-      yum:  name=htop 
+    - name: htop インストール
+      yum:  name=htop
+    - name: yum-utils インストール
+      yum:  name=yum-utils
+    - name: wget インストール
+      yum:  wget
