@@ -1,4 +1,5 @@
-- hosts: tower
+- hosts: localhost
+  connection: local
   tasks:
     - name: Hello Message
       debug:
