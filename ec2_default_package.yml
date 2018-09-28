@@ -5,4 +5,4 @@
     - name: yum-utils インストール
       yum:  name=yum-utils
     - name: wget インストール
-      yum:  wget
+      yum:  name=wget
