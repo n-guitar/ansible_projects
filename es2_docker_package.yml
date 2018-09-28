@@ -1,0 +1,18 @@
+- hosts : docker_server
+  tasks:
+    - name: yum-utils インストール
+      yum: name=yum-utils
+    - name: docker レポジトリ登録
+      shell: "yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo"
+      args:
+        chdir: "/etc/yum.repos.d"
+        creates: docker-ce.repo
+    - name: docker-ce インストール (version:18.06.1.ce固定)
+      yum: name=docker-ce-18.06.1.ce-3.el7
+    - name: start & enable docker 
+      systemd:
+        name: docker.service
+        state: started
+        daemon_reload: yes
+        enabled: yes
+
