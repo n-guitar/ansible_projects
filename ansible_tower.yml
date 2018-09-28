@@ -1,0 +1,6 @@
+- hosts: tower
+  tasks:
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
+
