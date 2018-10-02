@@ -1,1 +1,6 @@
 - ec2_remote_facts:
+  region: "{{ REGION }}"
+    filters:
+      private-ip-address: "{{ EC2_PRIVATE_IP }}"
+      subnet-id: "{{ SUBNET_ID }}"
+  register: ec2
