@@ -1,4 +1,4 @@
-- hosts: ansible_server
+- hosts: all
   tasks:
     - name: yum-utils インストール
       yum: name=yum-utils
