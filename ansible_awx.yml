@@ -21,8 +21,8 @@
         state: started
         daemon_reload: yes
         enabled: yes
-    - name: gitcloneレポジトリ登録
+    - name: gitclone
       shell: "cd /opt;git clone https://github.com/ansible/awx.git"
     - name: awxインストール
-      shell: "/opt/awx/installer/ansible-playbook -i inventory install.yml"
+      shell: "cd /opt/awx/installer; ansible-playbook -i inventory install.yml"
         
