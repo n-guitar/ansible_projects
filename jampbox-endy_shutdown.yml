@@ -1,0 +1,4 @@
+- hosts: all
+  tasks:
+   - name: shutdown開始
+     shell: "shutdown -h now"
