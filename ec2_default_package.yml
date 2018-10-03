@@ -1,8 +1,10 @@
 - hosts: all
   tasks:
-    - name: htop インストール
-      yum:  name=htop
+    - name: EPEL インストール
+      yum:  name=epel-release
     - name: yum-utils インストール
       yum:  name=yum-utils
     - name: wget インストール
       yum:  name=wget
+    - name: htop インストール
+      yum:  name=htop
