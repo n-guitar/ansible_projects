@@ -1,4 +1,6 @@
 - hosts: all
   tasks:
+   - name: 時間表示
+     shell: "date"
    - name: shutdown開始
      shell: "shutdown -h now"
