@@ -1,8 +1,0 @@
----
-- name: Initialize OS setting for Linux Server
-  hosts: linux_server
-  become: ture
-
-  roles:
-   - name: common/local
-     tag: locale
