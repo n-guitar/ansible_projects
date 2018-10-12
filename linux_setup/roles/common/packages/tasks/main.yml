@@ -11,13 +11,13 @@
   with_items:
     - "epel-release"
     - "*"
-  when: ansible_os_famiry == 'RedHat' # CentOS==RedHat
+  when: ansible_os_family == 'RedHat' # CentOS==RedHat
 
 # apt
 - name: main / update apt packages
   apt:
     update_cache: yes
-  when: ansible_os_famiry == 'Debian'
+  when: ansible_os_family == 'Debian'
 
 - name: main / install the required packages
   package:
