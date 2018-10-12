@@ -4,5 +4,5 @@
   become: ture
 
   roles:
-   - name: common/local
+   - name: common/locale
      tags: locale
