@@ -6,3 +6,6 @@
   roles:
    - name: common/locale
      tags: locale
+   - name: common/packages
+     tags: packages
+
