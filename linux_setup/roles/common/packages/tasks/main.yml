@@ -11,7 +11,7 @@
   with_items:
     - "epel-release"
     - "*"
-  when: ansible_os_famiry == 'CentOS'
+  when: ansible_os_famiry == 'RedHat' # CentOS==RedHat
 
 # apt
 - name: main / update apt packages
