@@ -1,7 +1,7 @@
 ---
 - name: Initialize OS setting for Linux Server
   hosts: linux_server
-  become: ture
+  become: yes
 
   roles:
    - name: common/locale
