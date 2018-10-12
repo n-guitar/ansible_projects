@@ -1,0 +1,20 @@
+---
+- hosts: all
+  vars:
+    user_name: ansible  # 作成するユーザ名を指定する
+  tasks:
+    - user:
+        name: "{{user_name}}"
+        uid: 2000
+        generate_ssh_key: yes
+
+    - name: Ansible管理ホストのSSH公開鍵を登録
+      authorized_key:
+        user: ansible
+        key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+
+    - name: ansible ユーザに sudo 権限を付与
+      lineinfile:
+        dest: /etc/sudoers
+        backup: yes
+        line: 'ansible ALL=(ALL) NOPASSWD: ALL'

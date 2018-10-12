@@ -1,0 +1,55 @@
+- hosts: localhost
+  vars:
+    user_name: ansible  # 作成するユーザ名を指定する
+  tasks:
+    - name: add user.
+      user:
+        name: "{{user_name}}"
+        uid: 2000
+        createhome: yes
+        generate_ssh_key: yes
+
+    - name: make .ssh directory
+      file:
+        path: /home/{{user_name}}/.ssh
+        state: directory
+        owner: "{{user_name}}"
+        group: "{{user_name}}"
+        mode:  0700
+
+    - name: chown ansible directory
+      file:
+        path: /etc/ansible
+        state: directory
+        recurse: yes
+        owner: "{{user_name}}"
+        group: "{{user_name}}"
+
+    - name: add sudoers.
+      lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: "^%{{user_name}} ALL="
+        line: "%{{user_name}} ALL=(ALL) NOPASSWD: ALL"
+        validate: '/usr/sbin/visudo -cf %s'
+
+    - name: comment out PermitRootLogin yes
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        state: present
+        regexp: "^PermitRootLogin yes"
+        regexp: "^#PermitRootLogin yes"
+        line: "#PermitRootLogin yes"
+
+    - name: add PermitRootLogin no
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        state: present
+        regexp: "^PermitRootLogin no"
+        insertafter: '^#PermitRootLogin yes'
+        line: "PermitRootLogin no"
+
+    - name: restart service sshd
+      systemd:
+        name: sshd
+        state: restarted

@@ -1,0 +1,4 @@
+# timezoneの設定
+- name: set timezone
+  timezone:
+    name: "{{ locale_timezone }}"
