@@ -1,0 +1,11 @@
+- name: bind install
+  hosts: dns_server
+  tasks:
+    - name: bind-chroot install
+      yum: name=bind-chroot
+    - name: start & enable named
+      systemd:
+        name: named
+        state: started
+        daemon_reload: yes
+        enabled: yes
