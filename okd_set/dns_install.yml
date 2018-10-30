@@ -1,5 +1,5 @@
 - name: bind install
-  hosts: dns_server
+  hosts: localhost
   tasks:
     - name: bind-chroot install
       yum: name=bind-chroot
